@@ -1,0 +1,56 @@
+RESULT event(ServerReceives0(TLS13,cr_18,psk_18,n_7,ad_7,m_13)) ==> event(ClientSends0(TLS13,cr_18,psk_18,n_7,ad_7,m_13)) || psk_18 = NoPSK || event(CompromisedPreSharedKey(psk_18)) || event(ClientOffersAE(cr_18,WeakAE)) is true.
+
+--------------------------------------------------------------
+Verification summary:
+
+Query event(ClientFinished(TLS12,cr_18,sr_12,psk_18,p_7,m_13,o_16,ck_10,sk_6,cb_5,ms_7)) ==> event(ServerFinished(TLS12,cr_18,sr_12,psk_18,p_7,m_13,o_16,ck_10,sk_6,cb_5,ms_7)) is true.
+
+Query event(ClientFinished(TLS13,cr_18,sr_12,psk_18,p_7,m_13,o_16,ck_10,sk_6,cb_5,ms_7)) ==> event(PreServerFinished(TLS13,cr_18,sr_12,psk_18,p_7,m_13,o_16,ck_10,sk_6,cb_5)) is false.
+
+Query not event(ServerFinished(TLS12,cr_18,sr_12,psk_18,p_7,m_13,o_16,ck_10,sk_6,cb_5,ms_7)) is true.
+
+Query not event(ClientFinished(TLS12,cr_18,sr_12,psk_18,p_7,m_13,o_16,ck_10,sk_6,cb_5,ms_7)) is true.
+
+Query not event(ServerFinished(TLS13,cr_18,sr_12,psk_18,p_7,m_13,o_16,ck_10,sk_6,cb_5,ms_7)) is false.
+
+Query not event(PreServerFinished(TLS13,cr_18,sr_12,psk_18,p_7,m_13,o_16,ck_10,sk_6,cb_5)) is false.
+
+Query not event(ClientFinished(TLS13,cr_18,sr_12,psk_18,p_7,m_13,o_16,ck_10,sk_6,cb_5,ms_7)) is false.
+
+Query event(ClientAEKeyLeaked(TLS13,cr_18,sr_12,psk_18,p_7)) ==> (event(WeakOrCompromisedKey(p_7)) && (psk_18 = NoPSK || event(CompromisedPreSharedKey(psk_18)))) || event(ServerChoosesKEX(cr_18,sr_12,p_7,TLS13,DHE_13(WeakDH,e))) is false.
+
+Query event(ClientAEKeyLeaked(TLS13,cr_18,sr_12,psk_18,p_7)) ==> (event(WeakOrCompromisedKey(p_7)) && (psk_18 = NoPSK || event(CompromisedPreSharedKey(psk_18)))) || event(ServerChoosesHash(cr'_5,sr'_3,p_7,TLS13,WeakHash)) is false.
+
+Query event(ClientAEKeyLeaked(TLS13,cr_18,sr_12,psk_18,p_7)) ==> event(ServerChoosesKEX(cr_18,sr_12,p_7,TLS13,DHE_13(WeakDH,e))) || event(ServerChoosesHash(cr'_5,sr'_3,p_7,TLS13,WeakHash)) is false.
+
+Query inj-event(ClientFinished(TLS13,cr_18,sr_12,psk_18,p_7,o_16,m_13,ck_10,sk_6,cb_5,ms_7)) ==> inj-event(PreServerFinished(TLS13,cr_18,sr_12,psk_18,p_7,o_16,m_13,ck_10,sk_6,cb_5)) || (event(WeakOrCompromisedKey(p_7)) && (psk_18 = NoPSK || event(CompromisedPreSharedKey(psk_18)))) is false.
+
+Query inj-event(ClientFinished(TLS13,cr_18,sr_12,psk_18,p_7,o_16,m_13,ck_10,sk_6,cb_5,ms_7)) ==> inj-event(PreServerFinished(TLS13,cr_18,sr_12,psk_18,p_7,o_16,m_13,ck_10,sk_6,cb_5)) || (event(WeakOrCompromisedKey(p_7)) && (psk_18 = NoPSK || event(CompromisedPreSharedKey(psk_18)))) || event(ServerChoosesKEX(cr_18,sr_12,p_7,TLS13,DHE_13(WeakDH,e))) is false.
+
+Query inj-event(ClientFinished(TLS13,cr_18,sr_12,psk_18,p_7,o_16,m_13,ck_10,sk_6,cb_5,ms_7)) ==> inj-event(PreServerFinished(TLS13,cr_18,sr_12,psk_18,p_7,o_16,m_13,ck_10,sk_6,cb_5)) || event(ServerChoosesKEX(cr_18,sr_12,p_7,TLS13,DHE_13(WeakDH,e))) || event(ServerChoosesHash(cr'_5,sr'_3,p_7,TLS13,WeakHash)) is false.
+
+Query inj-event(ClientFinished(TLS13,cr_18,sr_12,psk_18,p_7,o_16,m_13,ck_10,sk_6,cb_5,ms_7)) ==> inj-event(PreServerFinished(TLS13,cr_18,sr_12,psk_18,p_7,o_16,m_13,ck_10,sk_6,cb_5)) is false.
+
+Query not event(MatchingChannelBinding(TLS13,cr_18,sr_12,p_7,TLS13,cr'_5,sr'_3,p'_3)) is true.
+
+Query not event(MatchingResumptionSecret(TLS13,cr_18,sr_12,p_7,TLS13,cr'_5,sr'_3,p'_3)) is true.
+
+Query not event(MatchingAEKey(TLS13,cr_18,sr_12,p_7,TLS13,cr'_5,sr'_3,p'_3)) is true.
+
+Query event(ClientAEKeyLeaked(TLS13,cr_18,sr_12,psk_18,p_7)) ==> (event(WeakOrCompromisedKey(p_7)) && (psk_18 = NoPSK || event(CompromisedPreSharedKey(psk_18)))) || event(ServerChoosesKEX(cr_18,sr_12,p_7,TLS13,DHE_13(WeakDH,e))) || event(ServerChoosesHash(cr'_5,sr'_3,p_7,TLS13,WeakHash)) is true.
+
+Query inj-event(ClientFinished(TLS13,cr_18,sr_12,psk_18,p_7,o_16,m_13,ck_10,sk_6,cb_5,ms_7)) ==> inj-event(PreServerFinished(TLS13,cr_18,sr_12,psk_18,p_7,o_16,m_13,ck_10,sk_6,cb_5)) || (event(WeakOrCompromisedKey(p_7)) && (psk_18 = NoPSK || event(CompromisedPreSharedKey(psk_18)))) || event(ServerChoosesKEX(cr_18,sr_12,p_7,TLS13,DHE_13(WeakDH,e))) || event(ServerChoosesHash(cr'_5,sr'_3,p_7,TLS13,WeakHash)) is true.
+
+Query attacker_p1(m_c(TLS13,cr_18,sr_12,p_7,psk_18)) ==> (event(WeakOrCompromisedKey(p_7)) && (psk_18 = NoPSK || event(CompromisedPreSharedKey(psk_18)))) || event(ServerChoosesAE(cr_18,sr_12,p_7,TLS13,WeakAE)) || event(ServerChoosesKEX(cr_18,sr_12,p_7,TLS13,DHE_13(WeakDH,e))) || event(ServerChoosesHash(cr'_5,sr'_3,p_7,TLS13,WeakHash)) is true.
+
+Query attacker_p1(m_c0(TLS13,cr_18,psk_18)) ==> psk_18 = NoPSK || event(CompromisedPreSharedKey(psk_18)) || event(ClientOffersAE(cr_18,WeakAE)) is true.
+
+Query event(ClientReceives(TLS13,cr_18,sr_12,psk_18,p_7,n_7,ad_7,m_13)) ==> event(ServerSends(TLS13,cr_18,sr_12,psk_18,p_7,n_7,ad_7,m_13)) || (event(WeakOrCompromisedKey(p_7)) && (psk_18 = NoPSK || event(CompromisedPreSharedKey(psk_18)))) || event(ServerChoosesAE(cr_18,sr_12,p_7,TLS13,WeakAE)) || event(ServerChoosesKEX(cr_18,sr_12,p_7,TLS13,DHE_13(WeakDH,e))) || event(ServerChoosesHash(cr'_5,sr'_3,p_7,TLS13,WeakHash)) is true.
+
+Query event(ServerReceives(TLS13,cr_18,sr_12,psk_18,p_7,n_7,ad_7,m_13)) ==> event(ClientSends(TLS13,cr_18,sr_12,psk_18,p_7,n_7,ad_7,m_13)) || psk_18 = NoPSK || event(CompromisedPreSharedKey(psk_18)) || event(ServerChoosesAE(cr_18,sr_12,p_7,TLS13,WeakAE)) || event(ServerChoosesKEX(cr_18,sr_12,p_7,TLS13,DHE_13(WeakDH,e))) || event(ServerChoosesHash(cr'_5,sr'_3,p_7,TLS13,WeakHash)) is true.
+
+Query event(ServerReceives0(TLS13,cr_18,psk_18,n_7,ad_7,m_13)) ==> event(ClientSends0(TLS13,cr_18,psk_18,n_7,ad_7,m_13)) || psk_18 = NoPSK || event(CompromisedPreSharedKey(psk_18)) || event(ClientOffersAE(cr_18,WeakAE)) is true.
+
+--------------------------------------------------------------
+
+(base) nemeiralal12@dhcp-10-250-101-141 downloads % 
