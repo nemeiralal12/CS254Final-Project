@@ -1,0 +1,48 @@
+RESULT attacker_p1(m_c(TLS12,cr_18,sr_12,p_7,psk_16)) ==> event(WeakOrCompromisedKey(p_7)) || (event(PostSessionCompromisedKey(p_7)) && event(ServerChoosesKEX(cr_18,sr_12,p_7,TLS12,RSA(ra)))) || event(ServerChoosesAE(cr_18,sr_12,p_7,TLS12,WeakAE)) || event(ServerChoosesKEX(cr_18,sr_12,p_7,TLS12,DHE(WeakDH))) || event(ServerChoosesKEX(cr'_5,sr'_3,p_7,TLS12,RSA(WeakRSADecryption))) || event(ServerChoosesHash(cr'_5,sr'_3,p_7,TLS12,WeakHash)) is true.
+
+--------------------------------------------------------------
+Verification summary:
+
+Query event(ClientFinished(TLS12,cr_18,sr_12,psk_16,p_7,m_10,o_16,ck_12,sk_8,cb_5,ms_9)) ==> event(ServerFinished(TLS12,cr_18,sr_12,psk_16,p_7,m_10,o_16,ck_12,sk_8,cb_5,ms_9)) is false.
+
+Query event(ClientFinished(TLS13,cr_18,sr_12,psk_16,p_7,m_10,o_16,ck_12,sk_8,cb_5,ms_9)) ==> event(PreServerFinished(TLS13,cr_18,sr_12,psk_16,p_7,m_10,o_16,ck_12,sk_8,cb_5)) is true.
+
+Query not event(ServerFinished(TLS12,cr_18,sr_12,psk_16,p_7,m_10,o_16,ck_12,sk_8,cb_5,ms_9)) is false.
+
+Query not event(ClientFinished(TLS12,cr_18,sr_12,psk_16,p_7,m_10,o_16,ck_12,sk_8,cb_5,ms_9)) is false.
+
+Query not event(ServerFinished(TLS13,cr_18,sr_12,psk_16,p_7,m_10,o_16,ck_12,sk_8,cb_5,ms_9)) is true.
+
+Query not event(PreServerFinished(TLS13,cr_18,sr_12,psk_16,p_7,m_10,o_16,ck_12,sk_8,cb_5)) is true.
+
+Query not event(ClientFinished(TLS13,cr_18,sr_12,psk_16,p_7,m_10,o_16,ck_12,sk_8,cb_5,ms_9)) is true.
+
+Query not event(MatchingResumptionSecret(TLS12,cr_18,sr_12,p_7,TLS12,cr'_5,sr'_3,p'_3)) is false.
+
+Query not event(MatchingAEKey(TLS12,cr_18,sr_12,p_7,TLS12,cr'_5,sr'_3,p'_3)) is false.
+
+Query event(ClientAEKeyLeaked(TLS12,cr_18,sr_12,psk_16,p_7)) ==> event(WeakOrCompromisedKey(p_7)) || event(ServerChoosesKEX(cr_18,sr_12,p_7,TLS12,DHE(WeakDH))) || event(ServerChoosesKEX(cr'_5,sr'_3,p_7,TLS12,RSA(WeakRSADecryption))) is false.
+
+Query event(ClientAEKeyLeaked(TLS12,cr_18,sr_12,psk_16,p_7)) ==> event(WeakOrCompromisedKey(p_7)) || event(ServerChoosesKEX(cr_18,sr_12,p_7,TLS12,DHE(WeakDH))) || event(ServerChoosesHash(cr'_5,sr'_3,p_7,TLS12,WeakHash)) is false.
+
+Query event(ClientAEKeyLeaked(TLS12,cr_18,sr_12,psk_16,p_7)) ==> event(WeakOrCompromisedKey(p_7)) || event(ServerChoosesKEX(cr'_5,sr'_3,p_7,TLS12,RSA(WeakRSADecryption))) || event(ServerChoosesHash(cr'_5,sr'_3,p_7,TLS12,WeakHash)) is false.
+
+Query event(ClientAEKeyLeaked(TLS12,cr_18,sr_12,psk_16,p_7)) ==> event(ServerChoosesKEX(cr_18,sr_12,p_7,TLS12,DHE(WeakDH))) || event(ServerChoosesKEX(cr'_5,sr'_3,p_7,TLS12,RSA(WeakRSADecryption))) || event(ServerChoosesHash(cr'_5,sr'_3,p_7,TLS12,WeakHash)) is false.
+
+Query event(ClientFinished(TLS12,cr_18,sr_12,NoPSK,p_7,o_16,m_10,ck_12,sk_8,cb_5,ms_9)) ==> event(ServerFinished(TLS12,cr_18,sr_12,NoPSK,p_7,o_16,m_10,ck_12,sk_8,cb_5,ms_9)) || event(WeakOrCompromisedKey(p_7)) || event(ServerChoosesKEX(cr_18,sr_12,p_7,TLS12,DHE(WeakDH))) || event(ServerChoosesKEX(cr'_5,sr'_3,p_7,TLS12,RSA(WeakRSADecryption))) is false.
+
+Query event(ClientFinished(TLS12,cr_18,sr_12,NoPSK,p_7,o_16,m_10,ck_12,sk_8,cb_5,ms_9)) ==> event(ServerFinished(TLS12,cr_18,sr_12,NoPSK,p_7,o_16,m_10,ck_12,sk_8,cb_5,ms_9)) || event(WeakOrCompromisedKey(p_7)) || event(ServerChoosesKEX(cr_18,sr_12,p_7,TLS12,DHE(WeakDH))) || event(ServerChoosesHash(cr'_5,sr'_3,p_7,TLS12,WeakHash)) is false.
+
+Query event(ClientFinished(TLS12,cr_18,sr_12,NoPSK,p_7,o_16,m_10,ck_12,sk_8,cb_5,ms_9)) ==> event(ServerFinished(TLS12,cr_18,sr_12,NoPSK,p_7,o_16,m_10,ck_12,sk_8,cb_5,ms_9)) || event(WeakOrCompromisedKey(p_7)) || event(ServerChoosesKEX(cr'_5,sr'_3,p_7,TLS12,RSA(WeakRSADecryption))) || event(ServerChoosesHash(cr'_5,sr'_3,p_7,TLS12,WeakHash)) is false.
+
+Query event(ClientFinished(TLS12,cr_18,sr_12,NoPSK,p_7,o_16,m_10,ck_12,sk_8,cb_5,ms_9)) ==> event(ServerFinished(TLS12,cr_18,sr_12,NoPSK,p_7,o_16,m_10,ck_12,sk_8,cb_5,ms_9)) || event(ServerChoosesKEX(cr_18,sr_12,p_7,TLS12,DHE(WeakDH))) || event(ServerChoosesKEX(cr'_5,sr'_3,p_7,TLS12,RSA(WeakRSADecryption))) || event(ServerChoosesHash(cr'_5,sr'_3,p_7,TLS12,WeakHash)) is false.
+
+Query not event(MatchingChannelBinding(TLS12,cr_18,sr_12,p_7,TLS12,cr'_5,sr'_3,p'_3)) is true.
+
+Query inj-event(ClientFinished(TLS12,cr_18,sr_12,NoPSK,p_7,o_16,m_10,ck_12,sk_8,cb_5,ms_9)) ==> inj-event(ServerFinished(TLS12,cr_18,sr_12,NoPSK,p_7,o_16,m_10,ck_12,sk_8,cb_5,ms_9)) || event(WeakOrCompromisedKey(p_7)) || event(ServerChoosesKEX(cr_18,sr_12,p_7,TLS12,DHE(WeakDH))) || event(ServerChoosesKEX(cr'_5,sr'_3,p_7,TLS12,RSA(WeakRSADecryption))) || event(ServerChoosesHash(cr'_5,sr'_3,p_7,TLS12,WeakHash)) is true.
+
+Query event(ClientAEKeyLeaked(TLS12,cr_18,sr_12,psk_16,p_7)) ==> event(WeakOrCompromisedKey(p_7)) || (event(PostSessionCompromisedKey(p_7)) && event(ServerChoosesKEX(cr_18,sr_12,p_7,TLS12,RSA(ra)))) || event(ServerChoosesKEX(cr_18,sr_12,p_7,TLS12,DHE(WeakDH))) || event(ServerChoosesKEX(cr'_5,sr'_3,p_7,TLS12,RSA(WeakRSADecryption))) || event(ServerChoosesHash(cr'_5,sr'_3,p_7,TLS12,WeakHash)) is true.
+
+Query event(ClientReceives(TLS12,cr_18,sr_12,NoPSK,p_7,n_7,ad_7,m_10)) ==> event(ServerSends(TLS12,cr_18,sr_12,NoPSK,p_7,n_7,ad_7,m_10)) || event(WeakOrCompromisedKey(p_7)) || event(ServerChoosesAE(cr_18,sr_12,p_7,TLS12,WeakAE)) || event(ServerChoosesKEX(cr_18,sr_12,p_7,TLS12,DHE(WeakDH))) || event(ServerChoosesKEX(cr'_5,sr'_3,p_7,TLS12,RSA(WeakRSADecryption))) || event(ServerChoosesHash(cr'_5,sr'_3,p_7,TLS12,WeakHash)) is true.
+
+Query attacker_p1(m_c(TLS12,cr_18,sr_12,p_7,psk_16)) ==> event(WeakOrCompromisedKey(p_7)) || (event(PostSessionCompromisedKey(p_7)) && event(ServerChoosesKEX(cr_18,sr_12,p_7,TLS12,RSA(ra)))) || event(ServerChoosesAE(cr_18,sr_12,p_7,TLS12,WeakAE)) || event(ServerChoosesKEX(cr_18,sr_12,p_7,TLS12,DHE(WeakDH))) || event(ServerChoosesKEX(cr'_5,sr'_3,p_7,TLS12,RSA(WeakRSADecryption))) || event(ServerChoosesHash(cr'_5,sr'_3,p_7,TLS12,WeakHash)) is true.
